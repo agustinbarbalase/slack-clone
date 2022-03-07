@@ -27,8 +27,9 @@ model Message {
 
 model Chat {
   id        String    @id @default(uuid())
+  name      String
   messages  Message[] @relation("chatOwner")
-  channel   Channel   @relation("chatOwner", fields: [channelId], references: [id])
+  channel   Channel   @relation("channelOwnerOfChat", fields: [channelId], references: [id])
   channelId String
 }
 
@@ -38,7 +39,7 @@ model Channel {
   owner   User   @relation("channelOwner", fields: [ownerId], references: [id])
   ownerId String
   members User[]
-  Chats   Chat[] @relation("chatOwner")
+  Chats   Chat[] @relation("channelOwnerOfChat")
 }
 
 model User {
