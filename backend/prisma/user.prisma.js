@@ -1,5 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
-const prisma = PrismaClient.User;
+const prisma = new PrismaClient().User;
 
 module.exports = {
   createUser: (data) => {
@@ -11,6 +11,13 @@ module.exports = {
     return prisma.findUnique({
       where: {
         id,
+      },
+    });
+  },
+  findUserByEmail: (email) => {
+    return prisma.findUnique({
+      where: {
+        email,
       },
     });
   },
