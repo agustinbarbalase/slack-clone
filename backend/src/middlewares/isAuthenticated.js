@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
   }
 
   try {
-    token = await decodeToken(authorization.replace(/bearer/gm, "").trim());
+    token = await decodeToken(authorization.replace(/bearer/gmi, "").trim());
     const user = await userPrisma.findUserById(token.id);
     if (!user || token.password !== user.password) {
       return res.status(400).send({
