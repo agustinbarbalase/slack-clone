@@ -25,7 +25,7 @@ module.exports = {
       const token = await generateToken(user);
       res.status(200).send({ token });
     } catch (err) {
-      next(err);
+      next(new Error(err.name));
     }
   },
   signUp: async (req, res, next) => {
@@ -34,15 +34,13 @@ module.exports = {
     try {
       const passwordHashed = await generatePassword(data.password);
       const createdUser = await userPrisma.createUser({
-        data: {
-          ...data,
-          password: passwordHashed,
-        },
+        ...data,
+        password: passwordHashed,
       });
       const token = await generateToken(createdUser);
       res.status(201).send({ token });
     } catch (err) {
-      next(err);
+      next(new Error(err.name));
     }
   },
 };
