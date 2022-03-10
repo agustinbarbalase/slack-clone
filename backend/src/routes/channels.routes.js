@@ -22,14 +22,14 @@ router.post(
   channelsControllers.createChannel
 );
 router.put(
-  "/:channelId/:userId",
+  "/add/:channelId/:userId",
   isAuthenticated,
   (req, res, next) => isOwner(req, res, next, "channel"),
   validateChannelForMember,
   channelsControllers.addMemberToChannel
 );
 router.put(
-  "/:channelId/:userId",
+  "/remove/:channelId/:userId",
   isAuthenticated,
   (req, res, next) => isMember(req, res, next, "channel"),
   validateChannelForMember,
