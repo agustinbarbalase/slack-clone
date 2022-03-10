@@ -7,6 +7,9 @@ module.exports = {
       data,
     });
   },
+  findAllUsers: () => {
+    return prisma.findMany();
+  },
   findUserById: (id) => {
     return prisma.findUnique({
       where: {
@@ -19,6 +22,25 @@ module.exports = {
       where: {
         email,
       },
+    });
+  },
+  getMember: (id) => {
+    return prisma.findUnique({
+      where: {
+        id
+      },
+      select: {
+        membersChannel: {
+          select: {
+            id: true,
+            Chats: {
+              select: {
+                id: true
+              }
+            }
+          }
+        }
+      }
     });
   },
   editUser: (id, data) => {
