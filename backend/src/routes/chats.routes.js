@@ -7,25 +7,25 @@ const router = Router();
 router.get(
   "/:channelId/:chatId",
   isAuthenticated,
-  (req, res, next) => isMember(req, res, next, "chat"),
+  isMember,
   chatsControllers.getChat
 );
 router.post(
   "/:channelId",
   isAuthenticated,
-  (req, res, next) => isOwner(req, res, next, "channel"),
+  isOwner,
   chatsControllers.createChat
 );
 router.put(
   "/:channelId/:chatId",
   isAuthenticated,
-  (req, res, next) => isOwner(req, res, next, "chat"),
+  isOwner,
   chatsControllers.editChat
 );
 router.delete(
   "/:channelId/:chatId",
   isAuthenticated,
-  (req, res, next) => isOwner(req, res, next, "chat"),
+  isOwner,
   chatsControllers.deleteChat
 );
 

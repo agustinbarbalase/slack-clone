@@ -12,33 +12,34 @@ router.get("/", channelsControllers.getAllChannels);
 router.get(
   "/:channelId",
   isAuthenticated,
-  (req, res, next) => isMember(req, res, next, "channel"),
+  isMember,
   channelsControllers.getChannel
 );
 router.post(
   "/",
-  (req, res, next) => isMember(req, res, next, "channel"),
+  isAuthenticated,
+  isMember,
   validateChannelForCreate,
   channelsControllers.createChannel
 );
 router.put(
   "/add/:channelId/:userId",
   isAuthenticated,
-  (req, res, next) => isOwner(req, res, next, "channel"),
+  isOwner,
   validateChannelForMember,
   channelsControllers.addMemberToChannel
 );
 router.put(
   "/remove/:channelId/:userId",
   isAuthenticated,
-  (req, res, next) => isMember(req, res, next, "channel"),
+  isMember,
   validateChannelForMember,
   channelsControllers.removeMemberToChannel
 );
 router.delete(
   "/:channelId",
   isAuthenticated,
-  (req, res, next) => isOwner(req, res, next, "channel"),
+  isOwner,
   channelsControllers.deleteChannel
 );
 
