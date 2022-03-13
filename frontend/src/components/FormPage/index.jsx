@@ -10,7 +10,7 @@ const Form = styled.form`
   @media (min-width: 430px) {
     height: max-content;
     width: max-content;
-    padding: 3rem;
+    padding: 3rem 3rem 2rem 3rem;
     box-shadow: 0px 5px 20px 10px rgb(0 0 0 / 9%);
     position: absolute;
     top: 50%;
@@ -30,14 +30,27 @@ const Title = styled.h1`
   color: #1d1c1d;
 `;
 
+const ChangeAuth = styled.p`
+  text-align: center;
+  margin: 0;
+`;
+
 const FormPage = (props) => {
   return (
-    <Form>
+    <Form onSubmit={props.onSubmit}>
       <Link to="/" style={{ textAlign: "center" }}>
         <Img src="/src/slack-logo.svg" />
       </Link>
       <Title>{props.title}</Title>
       {props.children}
+      <ChangeAuth>
+        Or{" "}
+        <Link to={`${props.endpointChange}`}>
+          {props.endpointChange === "/signup"
+            ? "create an account"
+            : "login with your account"}
+        </Link>
+      </ChangeAuth>
     </Form>
   );
 };
