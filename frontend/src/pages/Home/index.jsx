@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import slackFaviconUrl from "../../slack-favicon.svg";
 
 const NavBar = styled.nav`
   display: flex;
@@ -77,7 +78,7 @@ const Home = () => {
       </NavBar>
       <Header>
         <Presentation>
-          <Logo src="/src/slack-favicon.svg" />
+          <Logo src={slackFaviconUrl} />
           <Title>Slack clone</Title>
           <Phrase>Your favorite app to work</Phrase>
         </Presentation>

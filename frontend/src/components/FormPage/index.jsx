@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import slackLogoUrl from "../../slack-logo.svg";
 
 const Form = styled.form`
   display: grid;
@@ -39,7 +40,7 @@ const FormPage = (props) => {
   return (
     <Form onSubmit={props.onSubmit}>
       <Link to="/" style={{ textAlign: "center" }}>
-        <Img src="/src/slack-logo.svg" />
+        <Img src={slackLogoUrl} />
       </Link>
       <Title>{props.title}</Title>
       {props.children}
