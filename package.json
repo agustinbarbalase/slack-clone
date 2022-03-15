@@ -4,9 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build --workspace=frontend && npm run start --workspace=backend",
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:frontend": "npm run build:watch --workspace=frontend"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Agustín Barbalase",
+  "license": "MIT",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ]
 }
