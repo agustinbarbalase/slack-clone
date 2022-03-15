@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
+import NotFound from "./pages/NotFound";
 import Auth from "./components/Auth";
 
 const App = () => {
@@ -41,6 +42,7 @@ const App = () => {
             </Auth>
           }
         />
+        <Route path="*" exact={true} element={<NotFound />}/>
       </Routes>
     </BrowserRouter>
   );
