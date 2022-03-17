@@ -1,24 +1,20 @@
 import axios from "axios";
 
-export const loginServices = (email, password) => {
+export const loginServices = (data) => {
   return axios.post("/api/sessions/login", {
     body: {
       data: {
-        email,
-        password,
+        ...data
       },
     },
   });
 };
 
-export const signUpServices = (name, surname, email, password) => {
+export const signUpServices = (data) => {
   return axios.post("/api/sessions/signup", {
     body: {
       data: {
-        name,
-        surname,
-        email,
-        password,
+        ...data
       },
     },
   });

@@ -2,6 +2,7 @@ import Input from "../../components/Input";
 import FormPage from "../../components/FormPage";
 import Loading from "../../components/Loading";
 import useForm from "../../hooks/useForm";
+import { loginServices } from "../../services/sessions.services";
 
 const Login = () => {
   const { formData, loading, error, handleChange, handleSubmitForm } = useForm(
@@ -9,7 +10,7 @@ const Login = () => {
       email: "",
       password: "",
     },
-    "login"
+    loginServices
   );
 
   if (loading) {

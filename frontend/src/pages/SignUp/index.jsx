@@ -2,6 +2,7 @@ import Input from "../../components/Input";
 import FormPage from "../../components/FormPage";
 import Loading from "../../components/Loading";
 import useForm from "../../hooks/useForm";
+import { signUpServices } from "../../services/sessions.services";
 
 const SignUp = () => {
   const { formData, loading, error, handleChange, handleSubmitForm } = useForm({
@@ -9,7 +10,7 @@ const SignUp = () => {
     password: "",
     name: "",
     surname: ""
-  }, "signup");
+  }, signUpServices);
 
   if (loading) {
     return (<Loading />);
