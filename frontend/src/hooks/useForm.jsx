@@ -17,7 +17,7 @@ const useForm = (inputs, endpointService) => {
       [key]: event.target.value,
     });
   };
-  
+
   const handleSubmitForm = (event) => {
     event.preventDefault();
     setLoading(true);
@@ -25,7 +25,7 @@ const useForm = (inputs, endpointService) => {
       .then((res) => setToken(res.data.token))
       .finally(() => {
         setLoading(false);
-        navigate("/");
+        navigate("/dashboard");
       })
       .catch((err) => {
         console.log(err);
